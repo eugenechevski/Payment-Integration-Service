@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: payment
+      POSTGRES_PASSWORD: payment
+      POSTGRES_DB: payment_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  payment-service:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql+asyncpg://payment:payment@db:5432/payment_db
+      STRIPE_API_KEY: ${STRIPE_API_KEY:-sk_test_12345}
+      ENCRYPTION_KEY: ${ENCRYPTION_KEY:-generate_32_bytes_base64}
+    ports:
+      - "8000:8000"
+
+volumes:
+  pgdata:

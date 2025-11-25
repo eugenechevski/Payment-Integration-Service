@@ -1,6 +1,6 @@
 # Payment Integration Service
 
-FastAPI + PostgreSQL service that mirrors the resume line: “Payment Integration Service | Python, FastAPI, PostgreSQL, Stripe API – Developed secure transaction endpoints supporting card verification and error recovery. Implemented encryption for stored tokens and tested API endpoints for concurrency handling. Collaborated with frontend teams to synchronize session and payment flow in live environments.”
+FastAPI + PostgreSQL service
 
 ## Tech Stack
 - FastAPI, Uvicorn
